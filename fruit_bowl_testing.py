@@ -1,6 +1,7 @@
 def add_to_fruit_bowl():
     return None
 
+
 def review_fruit(l):
     for x in l:
         output = "{:<10} -- {:>4}".format(x[0], x[1])
@@ -8,9 +9,7 @@ def review_fruit(l):
     return None
 
 
-
 def main():
-
 
     fruit_list = [
         ["apples", 2],
@@ -21,5 +20,6 @@ def main():
 
     review_fruit(fruit_list)
     return None
+
 
 main()
