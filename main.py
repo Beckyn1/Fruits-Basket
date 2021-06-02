@@ -28,6 +28,19 @@ def add_fruit(l):
     l[choice][1] += quantity
     print("You  now have {}".format(l[choice]))
 
+def eat_fruit(l):
+    # print list with indexes
+    for i in range(0, len(l)):
+        output = "{}: {} {}".format(i, l[i][1], l[i][0])
+        print(output)
+    choice = get_integer("please choose a fruit number")
+    # validate
+    print("{} is chosen".format(l[choice]))
+    quantity = get_integer("how many {} would you like to eat".format(l[choice][0]))
+    # validate
+    l[choice][1] -= quantity
+    print("You  now have {}".format(l[choice]))
+
 
 def main():
     fruit_list = [
@@ -40,6 +53,7 @@ def main():
     menu_list = [
         ["R", "Review Fruit"],
         ["A", "Add Fruit"],
+        ["E", "Eat Fruit"],
         ["Q", "Quit"]
     ]
     run_program = True
@@ -52,6 +66,8 @@ def main():
             review_fruit(fruit_list)
         elif user_choice == "A":
             add_fruit(fruit_list)
+        elif user_choice == "E":
+            eat_fruit(fruit_list)
         elif user_choice == "Q":
             run_program = False
         else:
