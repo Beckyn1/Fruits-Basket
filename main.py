@@ -20,26 +20,36 @@ def add_fruit(l):
     for i in range(0, len(l)):
         output = "{}: {} {}".format(i, l[i][1], l[i][0])
         print(output)
+
     choice = get_integer("please choose a fruit number")
     # validate
-    print("{} is chosen".format(l[choice]))
-    quantity = get_integer("how many {} would you like to add".format(l[choice][0]))
-    # validate
-    l[choice][1] += quantity
-    print("You  now have {}".format(l[choice]))
+    if 0 < choice < 4:
+        quantity = get_integer("how many {} would you like to add".format(l[choice][0]))
+        # validate
+        l[choice][1] += quantity
+        print("You  now have {}".format(l[choice]))
+    else:
+        print("Unrecognised entry, can only be 0, 1, 2 or 3")
+        return add_fruit(l)
+
 
 def eat_fruit(l):
+
     # print list with indexes
     for i in range(0, len(l)):
         output = "{}: {} {}".format(i, l[i][1], l[i][0])
         print(output)
     choice = get_integer("please choose a fruit number")
     # validate
-    print("{} is chosen".format(l[choice]))
-    quantity = get_integer("how many {} would you like to eat".format(l[choice][0]))
-    # validate
-    l[choice][1] -= quantity
-    print("You  now have {}".format(l[choice]))
+    if 0 < choice < 4:
+        print("{} is chosen".format(l[choice]))
+        quantity = get_integer("how many {} would you like to eat".format(l[choice][0]))
+        # validate
+        l[choice][1] -= quantity
+        print("You  now have {}".format(l[choice]))
+    else:
+        print("Unrecognised entry, can only be 0, 1, 2 or 3")
+        return eat_fruit(l)
 
 
 def main():
@@ -49,7 +59,10 @@ def main():
         ["quinces", 3],
         ["lemons", 7]
     ]
-
+    print()
+    print("Welcome to fruits basket!")
+    print("-"*42)
+    print("Please select an option from the menu:")
     menu_list = [
         ["R", "Review Fruit"],
         ["A", "Add Fruit"],
@@ -61,6 +74,7 @@ def main():
         for x in menu_list:
             output = "{}: {}".format(x[0], x[1])
             print(output)
+            print("-" * 42)
         user_choice = get_string("Please select an option: -> ")
         if user_choice == "R":
             review_fruit(fruit_list)
@@ -69,10 +83,10 @@ def main():
         elif user_choice == "E":
             eat_fruit(fruit_list)
         elif user_choice == "Q":
+            print("Thank you for playing")
             run_program = False
         else:
-            print("Unrecognised entry")
-            print("Thank you, the program has ended")
+            print("Unrecognised entry must be R, A, E or Q")
 
 
 if __name__ == "__main__":
