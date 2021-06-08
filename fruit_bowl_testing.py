@@ -22,4 +22,15 @@ def main():
     return None
 
 
-main()
+def remove_something():
+    fruit_list = [
+        ["apples", 2],
+        ["pears", 3],
+        ["quinces", 3],
+        ["lemons", 7]
+    ]
+    print(fruit_list)
+    fruit_list.pop(2)
+    print(fruit_list)
+remove_something()
+#main()
